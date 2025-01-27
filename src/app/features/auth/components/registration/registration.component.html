@@ -1,1 +1,52 @@
-<p>registration works!</p>
+<mat-card class="auth-card">
+  <mat-card-header>
+    <mat-card-title>Sign up</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <mat-icon matSuffix>email</mat-icon>
+        <input matInput formControlName="email" type="email" required />
+        <mat-error *ngIf="form.get('email')?.hasError('required')"> Email is required </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <mat-icon matSuffix>key</mat-icon>
+        <input matInput formControlName="password" type="password" required />
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Password must be at least 8 chars long
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Confirm password</mat-label>
+        <mat-icon matSuffix>key</mat-icon>
+        <input matInput formControlName="confirmPassword" type="password" required />
+        <mat-error *ngIf="form.get('confirmPassword')?.hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="form.get('confirmPassword')?.hasError('passwordsMismatch')">
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button class="accent" type="button" (click)="onSubmit()">Sign up</button>
+  </mat-card-actions>
+
+  <mat-card-footer>
+    <div class="mat-card-footer">
+      <p>Already have an account?</p>
+      <a mat-button routerLink="/auth/login">Log in!</a>
+    </div>
+  </mat-card-footer>
+</mat-card>

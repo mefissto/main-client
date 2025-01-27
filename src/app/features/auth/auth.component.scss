@@ -1,0 +1,15 @@
+// Define color variables
+$background-gradient-start: #f5f7fa;
+$background-gradient-end: #c3cfe2;
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    $background-gradient-start 0%,
+    $background-gradient-end 100%
+  );
+}

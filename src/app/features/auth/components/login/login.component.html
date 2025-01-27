@@ -1,46 +1,43 @@
-<div class="login-container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" type="email" required />
-          <mat-error *ngIf="form.get('email')?.hasError('required')">
-            Email is required
-          </mat-error>
-          <mat-error *ngIf="form.get('email')?.hasError('email')">
-            Please enter a valid email address
-          </mat-error>
-        </mat-form-field>
+<mat-card class="auth-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <mat-icon matSuffix>email</mat-icon>
+        <input matInput formControlName="email" type="email" required />
+        <mat-error *ngIf="form.get('email')?.hasError('required')"> Email is required </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="password" type="password" required />
-          <mat-error *ngIf="form.get('password')?.hasError('required')">
-            Password is required
-          </mat-error>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <mat-icon matSuffix>key</mat-icon>
+        <input matInput formControlName="password" type="password" required />
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          Password must be at least 8 chars long
+        </mat-error>
+      </mat-form-field>
+      <div class="reset-password">
+        <a routerLink="/auth/reset-password" class="link">Forgot Password?</a>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button class="accent" type="button" (click)="onSubmit()">Login</button>
+  </mat-card-actions>
 
-        <div class="actions">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="form.invalid"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button routerLink="/auth/register">Register</button>
-      <button mat-button routerLink="/auth/forgot-password">
-        Forgot Password?
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+  <mat-card-footer>
+    <div class="mat-card-footer">
+      <p>Don't have an account?</p>
+      <a mat-button routerLink="/auth/registration">Sign up!</a>
+    </div>
+  </mat-card-footer>
+</mat-card>

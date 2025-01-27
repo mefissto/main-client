@@ -1,0 +1,94 @@
+// Define SCSS variables
+$primary-color: #6200ea;
+$accent-color: #03dac6;
+$background-color: #f5f7fa;
+$surface-color: #ffffff;
+$on-primary-color: #ffffff;
+$on-surface-color: #000000;
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .top-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: $primary-color;
+    color: $on-primary-color;
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+
+      a {
+        color: $on-primary-color;
+        text-decoration: none;
+        font-size: 16px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .user-avatar {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .main-content {
+    display: flex;
+    flex: 1;
+
+    .left-panel {
+      width: 200px;
+      background-color: $surface-color;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 10px;
+
+          a {
+            color: $on-surface-color;
+            text-decoration: none;
+            font-size: 16px;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      background-color: $background-color;
+    }
+  }
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: $primary-color;
+    color: $on-primary-color;
+  }
+}

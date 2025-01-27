@@ -1,19 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
-
 @use '@angular/material' as mat;
 
 html {
   @include mat.theme(
     (
-      color: mat.$blue-palette,
-      typography: (
-        plain-family: Roboto,
-        brand-family: Open Sans,
-        bold-weight: 900,
-        medium-weight: 500,
-        regular-weight: 300,
-      ),
-      density: 0,
+      color: mat.$azure-palette,
+      typography: Roboto,
+    )
+  );
+}
+
+.accent {
+  @include mat.theme(
+    (
+      color: mat.$magenta-palette,
+    )
+  );
+}
+
+.warn {
+  @include mat.theme(
+    (
+      color: mat.$red-palette,
     )
   );
 }
