@@ -1,0 +1,20 @@
+<div class="pc-account-menu">
+  <button
+    mat-mini-fab
+    [matMenuTriggerFor]="menu"
+    aria-label="Account menu"
+    class="pc-account-menu-button"
+  >
+    <img
+      class="pc-account-menu-image"
+      src="https://avatar.iran.liara.run/username?username=Serhii+Maryniuk"
+    />
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let item of menuItems" mat-menu-item>
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span>{{ item.label }}</span>
+    </button>
+  </mat-menu>
+</div>

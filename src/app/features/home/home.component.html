@@ -1,4 +1,12 @@
 <div class="home-container">
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="spacer"></span>
+    <pc-account-menu></pc-account-menu>
+  </mat-toolbar>
   <header class="top-panel">
     <div class="logo">Pet Care</div>
     <nav class="menu">
@@ -7,9 +15,7 @@
       <a routerLink="/about">About</a>
       <a routerLink="/contact">Contact</a>
     </nav>
-    <div class="user-avatar">
-      <img src="assets/avatar.png" alt="User Avatar" />
-    </div>
+
     <a mat-button routerLink="/auth">Log out!</a>
   </header>
 
