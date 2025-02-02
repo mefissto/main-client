@@ -3,8 +3,8 @@ import { Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
-import { SidebarCloseMode, SidebarOpenMode } from '@enums/sidebar-mode.enum';
-import { MenuItem } from '@interfaces/menu-item.interface';
+import { SidebarCloseMode, SidebarOpenMode } from '@enums';
+import { MenuItem } from '@interfaces';
 import { CoreHeaderComponent } from '@shared/core-header/core-header.component';
 
 import { CORE_LAYOUT_ROUTES } from './core-layout.constants';

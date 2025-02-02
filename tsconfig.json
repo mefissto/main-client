@@ -20,12 +20,13 @@
     "module": "ES2022",
     "paths": {
       "@env/*": ["environments/*"],
-      "@enums/*": ["app/core/enums/*"],
-      "@interfaces/*": ["app/core/interfaces/*"],
+      "@enums": ["app/core/enums/index"],
+      "@interfaces": ["app/core/interfaces/index"],
+      "@state-manager": ["app/core/state-manager/index"],
       "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
-      "@app/*": ["app/*"],
-    },
+      "@app/*": ["app/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
