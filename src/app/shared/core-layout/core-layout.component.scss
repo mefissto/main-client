@@ -1,0 +1,120 @@
+/* filepath: /d:/Projects/pet-care-web-client/src/app/shared/core-layout/core-layout.component.scss */
+
+// Define SCSS variables
+$primary-color: #6200ea;
+$accent-color: #03dac6;
+$background-color: #f5f7fa;
+$surface-color: #ffffff;
+$on-primary-color: #ffffff;
+$on-surface-color: #000000;
+
+.pc-core-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .pc-core-header {
+    background-color: $primary-color;
+    color: $on-primary-color;
+  }
+
+  .pc-core-layout-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+
+    .pc-core-layout-container-left-panel {
+      width: 250px;
+      background-color: $surface-color;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 10px;
+
+          a {
+            display: flex;
+            align-items: center;
+            color: $on-surface-color;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+              background-color: rgba($primary-color, 0.1);
+            }
+
+            mat-icon {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      &.pc-core-layout-container-left-panel-open {
+        transform: translateX(0);
+      }
+
+      &.pc-core-layout-container-left-panel-closed {
+        transform: translateX(-100%);
+      }
+
+      &.pc-core-layout-container-left-panel-push {
+        transform: translateX(0);
+      }
+
+      &.pc-core-layout-container-left-panel-over {
+        position: absolute;
+        z-index: 1000;
+        transform: translateX(-100%);
+      }
+
+      &.pc-core-layout-container-left-panel-icons {
+        width: 80px;
+
+        ul {
+          li {
+            a {
+              justify-content: center;
+
+              mat-icon {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &.pc-core-layout-container-left-panel-hidden {
+        display: none;
+      }
+    }
+
+    .pc-core-layout-content {
+      flex: 1;
+      padding: 20px;
+      background-color: $background-color;
+      overflow-y: auto;
+      transition: margin-left 0.3s ease;
+
+      &.pc-core-layout-content-shift {
+        margin-left: 250px;
+      }
+    }
+  }
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: $primary-color;
+    color: $on-primary-color;
+  }
+}

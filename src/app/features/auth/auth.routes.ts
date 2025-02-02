@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
 
+import { LogoutGuard } from './guards/logout.guard';
+
 export const authRoutes: Routes = [
   {
     path: 'auth',
-    loadComponent: () =>
-      import('./auth.component').then((m) => m.AuthComponent),
+    loadComponent: () => import('./auth.component').then((m) => m.AuthComponent),
     children: [
       {
         path: '',
@@ -14,9 +15,7 @@ export const authRoutes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./components/login/login.component').then(
-            (m) => m.LoginComponent,
-          ),
+          import('./components/login/login.component').then((m) => m.LoginComponent),
       },
       {
         path: 'registration',
@@ -31,6 +30,12 @@ export const authRoutes: Routes = [
           import('./components/reset-password/reset-password.component').then(
             (m) => m.ResetPasswordComponent,
           ),
+      },
+      {
+        path: 'logout',
+        canActivate: [LogoutGuard],
+        loadComponent: () =>
+          import('./components/login/login.component').then((m) => m.LoginComponent),
       },
     ],
   },

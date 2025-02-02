@@ -1,6 +1,6 @@
-import { AccountMenuItem } from './account-menu.models';
+import { MenuItem } from '@core/interfaces/menu-item.interface';
 
-export const ACCOUNT_MENU_ITEMS: AccountMenuItem[] = [
+export const ACCOUNT_MENU_ITEMS: MenuItem[] = [
   {
     icon: 'person',
     label: 'My Account',
@@ -24,6 +24,6 @@ export const ACCOUNT_MENU_ITEMS: AccountMenuItem[] = [
   {
     icon: 'logout',
     label: 'Log out',
-    route: '/auth',
+    route: '/auth/logout',
   },
 ];

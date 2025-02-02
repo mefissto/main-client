@@ -1,0 +1,30 @@
+<div class="pc-core-layout">
+  <pc-core-header (openMenu)="toggleSidebar($event)"></pc-core-header>
+
+  <div class="pc-core-layout-container">
+    <div
+      class="pc-core-layout-container-left-panel"
+      [ngClass]="{
+        'pc-core-layout-container-left-panel-open': isSidebarOpen,
+        'pc-core-layout-container-left-panel-closed': !isSidebarOpen,
+        'pc-core-layout-container-left-panel-push': openMode() === openModes.PUSH,
+        'pc-core-layout-container-left-panel-over': openMode() === openModes.OVER,
+        'pc-core-layout-container-left-panel-icons': closeMode() === closeModes.ICONS,
+        'pc-core-layout-container-left-panel-hidden': closeMode() === closeModes.HIDDEN
+      }"
+    >
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a mat-button [routerLink]="item.route">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <section class="pc-core-layout-content">
+      <ng-content></ng-content>
+    </section>
+  </div>
+</div>

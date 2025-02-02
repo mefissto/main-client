@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
-import { AccountMenuComponent } from '../../shared/account-menu/account-menu.component';
+import { CoreLayoutComponent } from '../../shared/core-layout/core-layout.component';
 
 @Component({
   selector: 'pc-home',
@@ -16,7 +16,8 @@ import { AccountMenuComponent } from '../../shared/account-menu/account-menu.com
     MatIconModule,
     MatToolbarModule,
     RouterModule,
-    AccountMenuComponent,
+
+    CoreLayoutComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
