@@ -2,23 +2,24 @@ import { User } from '@interfaces';
 
 import { createPcAction, createPcErrorAction, createPcNoPayloadAction } from '@state-manager';
 
-import { LoginDto } from '../dtos/login.dto';
-import { RegistrationDto } from '../dtos/registration.dto';
 import { ResetPasswordDto } from '../dtos/reset-password.dto';
+import { SignInRequestDto } from '../dtos/sign-in-request.dto';
+import { SignInResponseDto } from '../dtos/sign-in-response.dto';
+import { SignUpRequestDto } from '../dtos/sign-up-request.dto';
 
 /**
  * Login Actions
  */
-export const loginRequest = createPcAction<LoginDto>('[Auth] Login Request');
-export const loginSuccess = createPcAction<User>('[Auth] Login Success');
-export const loginFailure = createPcErrorAction('[Auth] Login Failure');
+export const signInRequest = createPcAction<SignInRequestDto>('[Auth] Sign In Request');
+export const signInSuccess = createPcAction<SignInResponseDto>('[Auth] Sign In Success');
+export const signInFailure = createPcErrorAction('[Auth] Sign In Failure');
 
 /**
  * Register Actions
  */
-export const registerRequest = createPcAction<RegistrationDto>('[Auth] Register Request');
-export const registerSuccess = createPcAction<User>('[Auth] Register Success');
-export const registerFailure = createPcErrorAction('[Auth] Register Failure');
+export const signUpRequest = createPcAction<SignUpRequestDto>('[Auth] Sign Up Request');
+export const signUpSuccess = createPcAction<User>('[Auth] Sign Up Success');
+export const signUpFailure = createPcErrorAction('[Auth] Sign Up Failure');
 
 /**
  * Reset Password Actions

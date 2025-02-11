@@ -1,21 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { LoginDto } from '../dtos/login.dto';
-import { RegistrationDto } from '../dtos/registration.dto';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { BaseApiService } from '@core/services/base-api.service';
+
+import { SignInRequestDto } from '../dtos/sign-in-request.dto';
+import { SignInResponseDto } from '../dtos/sign-in-response.dto';
+import { SignUpRequestDto } from '../dtos/sign-up-request.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  private readonly baseApiService = inject(BaseApiService);
 
-  login(payload: LoginDto): Observable<any> {
-    return of(payload).pipe(delay(1000));
+  login(payload: SignInRequestDto): Observable<SignInResponseDto> {
+    return this.baseApiService.post('auth/sign-in', payload);
   }
 
-  registration(payload: RegistrationDto): Observable<any> {
-    return of(payload).pipe(delay(1000));
+  registration(payload: SignUpRequestDto): Observable<any> {
+    return this.baseApiService.post('auth/sign-up', payload);
   }
 
   logout(): void {

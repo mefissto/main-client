@@ -13,11 +13,11 @@ export class AuthEffects {
 
   readonly login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(authActions.loginRequest),
+      ofType(authActions.signInRequest),
       mergeMap((action) =>
         this.authService.login(action.payload).pipe(
-          map((user) => authActions.loginSuccess(user)),
-          catchError((error) => of(authActions.loginFailure({ error }))),
+          map((signInResponse) => authActions.signInSuccess({ payload: signInResponse })),
+          catchError((error) => of(authActions.signInFailure({ error }))),
         ),
       ),
     ),
@@ -25,11 +25,11 @@ export class AuthEffects {
 
   readonly registration$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(authActions.registerRequest),
+      ofType(authActions.signUpRequest),
       mergeMap((action) =>
         this.authService.registration(action.payload).pipe(
-          map((user) => authActions.registerSuccess(user)),
-          catchError((error) => of(authActions.registerFailure({ error }))),
+          map((user) => authActions.signUpSuccess(user)),
+          catchError((error) => of(authActions.signUpFailure({ error }))),
         ),
       ),
     ),

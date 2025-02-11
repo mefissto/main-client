@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { loginRequest } from '../../store/auth.actions';
+import { signInRequest } from '../../store/auth.actions';
 import { AuthState } from '../../store/auth.reducer';
 
 @Component({
@@ -42,7 +42,7 @@ export class LoginComponent {
     if (this.form.valid) {
       console.log(this.form.value);
 
-      this.store.dispatch(loginRequest({ payload: this.form.getRawValue() }));
+      this.store.dispatch(signInRequest({ payload: this.form.getRawValue() }));
     }
   }
 }

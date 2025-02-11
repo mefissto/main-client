@@ -1,47 +1,49 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
+import { User } from '@interfaces';
 import * as authActions from './auth.actions';
 
 export interface AuthState {
-  user: any;
+  accessToken: string | null;
+  user: User | null;
   loading: boolean;
   error: any;
 }
 
 export const initialState: AuthState = {
-  user: null,
+  accessToken: null,
   loading: false,
   error: null,
+  user: null,
 };
 
 const _authReducer = createReducer(
   initialState,
   // Login
-  on(authActions.loginRequest, (state) => ({ ...state, loading: true })),
-  on(authActions.loginSuccess, (state, { payload }) => ({
+  on(authActions.signInRequest, (state) => ({ ...state, loading: true })),
+  on(authActions.signInSuccess, (state, { payload }) => ({
     ...state,
     loading: false,
-    user: payload,
+    accessToken: payload.accessToken,
   })),
-  on(authActions.loginFailure, (state, { error }) => ({
+  on(authActions.signInFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,
-    user: null,
+    accessToken: null,
   })),
 
   // Register
-  on(authActions.registerRequest, (state) => ({ ...state, loading: true })),
-  on(authActions.registerSuccess, (state, { payload }) => ({
+  on(authActions.signUpRequest, (state) => ({ ...state, loading: true })),
+  on(authActions.signUpSuccess, (state, { payload }) => ({
     ...state,
     loading: false,
     user: payload,
   })),
-  on(authActions.registerFailure, (state, { error }) => ({
+  on(authActions.signUpFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,
-    user: null,
   })),
 
   // Reset Password
