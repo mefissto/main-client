@@ -1,16 +1,5 @@
 .pc-account-menu {
-  &-button {
-    border: none;
-    padding: 0;
-    display: inline-flex;
-    max-width: fit-content;
-    border-radius: 50%;
+  &-avatar {
     cursor: pointer;
-  }
-
-  &-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
   }
 }

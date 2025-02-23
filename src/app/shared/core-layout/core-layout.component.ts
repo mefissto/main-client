@@ -1,6 +1,4 @@
-import { NgClass, NgFor } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
 import { SidebarCloseMode, SidebarOpenMode } from '@enums';
@@ -11,7 +9,7 @@ import { CORE_LAYOUT_ROUTES } from './core-layout.constants';
 
 @Component({
   selector: 'pc-core-layout',
-  imports: [CoreHeaderComponent, RouterModule, NgClass, NgFor, RouterModule, MatIconModule],
+  imports: [CoreHeaderComponent, RouterModule, RouterModule],
   templateUrl: './core-layout.component.html',
   styleUrl: './core-layout.component.scss',
 })

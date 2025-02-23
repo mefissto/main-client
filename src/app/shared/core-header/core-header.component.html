@@ -1,10 +1,28 @@
 <div class="pc-core-header-component">
-  <mat-toolbar>
-    <button mat-icon-button aria-label="App logo" (click)="toggleMenu()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Pet Care</span>
-    <span class="spacer"></span>
-    <pc-account-menu></pc-account-menu>
-  </mat-toolbar>
+  <p-menubar [model]="items">
+    <ng-template #start>
+      <span>Pet Care</span>
+    </ng-template>
+    <ng-template #item let-item let-root="root">
+      <a pRipple class="flex items-center p-menubar-item-link">
+        <i class="pi {{ item.icon }}" style="color: slateblue"></i>
+        <span class="ml-2">{{ item.label }}</span>
+        <span
+          *ngIf="item.shortcut"
+          class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
+          >{{ item.shortcut }}</span
+        >
+        <i
+          *ngIf="item.items"
+          [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"
+        ></i>
+      </a>
+    </ng-template>
+    <ng-template #end>
+      <div class="flex items-center gap-2">
+        <input type="text" pInputText placeholder="Search" class="w-60 mr-4" pSize="small" />
+        <pc-account-menu></pc-account-menu>
+      </div>
+    </ng-template>
+  </p-menubar>
 </div>

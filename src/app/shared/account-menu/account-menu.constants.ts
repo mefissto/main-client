@@ -2,27 +2,27 @@ import { MenuItem } from '@core/interfaces/menu-item.interface';
 
 export const ACCOUNT_MENU_ITEMS: MenuItem[] = [
   {
-    icon: 'person',
+    icon: 'pi-user',
     label: 'My Account',
     route: '/profile',
   },
   {
-    icon: 'settings',
+    icon: 'pi-cog',
     label: 'Settings',
     route: '/settings',
   },
   {
-    icon: 'help',
+    icon: 'pi-question-circle',
     label: 'Help',
     route: '/help',
   },
   {
-    icon: 'feedback',
+    icon: 'pi-comments',
     label: 'Feedback',
     route: '/feedback',
   },
   {
-    icon: 'logout',
+    icon: 'pi-sign-out',
     label: 'Log out',
     route: '/auth/logout',
   },
