@@ -25,6 +25,7 @@
       "@state-manager": ["app/core/state-manager/index"],
       "@core/*": ["app/core/*"],
       "@shared/*": ["app/shared/*"],
+      "@features/*": ["app/features/*"],
       "@app/*": ["app/*"]
     }
   },
