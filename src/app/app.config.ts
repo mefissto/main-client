@@ -6,8 +6,10 @@ import { provideRouter } from '@angular/router';
 import { routerReducer } from '@ngrx/router-store';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { providePrimeNG } from 'primeng/config';
 
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
+import { PcThemePreset } from '@core/theme/theme-preset';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -19,6 +21,19 @@ export const appConfig: ApplicationConfig = {
       withInterceptorsFromDi(),
     ),
     provideAnimationsAsync(),
+    providePrimeNG({
+      ripple: true,
+      theme: {
+        preset: PcThemePreset,
+        options: {
+          darkModeSelector: '.pc-dark-theme',
+          cssLayer: {
+            name: 'primeng',
+            order: 'app-styles, tailwind-base, primeng, tailwind-utilities',
+          },
+        },
+      },
+    }),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' },

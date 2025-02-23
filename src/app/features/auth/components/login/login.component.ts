@@ -1,28 +1,37 @@
 import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { FloatLabel } from 'primeng/floatlabel';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessageModule } from 'primeng/message';
 
+import { markAllControlsAsDirty } from '@core/utils/form.utils';
 import { signInRequest } from '../../store/auth.actions';
 import { AuthState } from '../../store/auth.reducer';
 
 @Component({
   selector: 'pc-login',
   imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
+    ButtonModule,
     ReactiveFormsModule,
     NgIf,
     RouterModule,
+    CardModule,
+    MessageModule,
+    FloatLabel,
+    InputTextModule,
+    InputGroupModule,
+    InputGroupAddonModule,
+    IconFieldModule,
+    InputIconModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -38,6 +47,7 @@ export class LoginComponent {
 
   onSubmit(): void {
     this.form.markAllAsTouched();
+    markAllControlsAsDirty(this.form);
 
     if (this.form.valid) {
       console.log(this.form.value);
