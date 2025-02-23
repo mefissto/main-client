@@ -10,7 +10,7 @@ export class ErrorHandlerService {
   private readonly snackbarService = inject(SnackbarService);
 
   handleHttpErrorResponse(errResponse: HttpErrorResponse): void {
-    switch (errResponse.status) {
+        switch (errResponse.status) {
       case 400:
         this.showErrorMessage(errResponse);
         break;
@@ -23,9 +23,10 @@ export class ErrorHandlerService {
 
   private showErrorMessage(errResponse: HttpErrorResponse): void {
     const messages = this.getErrorMessages(errResponse);
+    const summary = errResponse.error.error || 'Error';
 
     for (const message of messages) {
-      this.snackbarService.open(message, 'Ok');
+      this.snackbarService.error({ detail: message, summary });
     }
   }
 

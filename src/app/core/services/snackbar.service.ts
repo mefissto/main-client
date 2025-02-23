@@ -1,43 +1,45 @@
-import { DestroyRef, inject, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { map, Observable, of, Subject, throttle } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { MessageService, ToastMessageOptions } from 'primeng/api';
 
 import { DEFAULT_SNACKBAR_CONFIG } from '@core/constants/app.constants';
-import { SnackbarNotification } from '@interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class SnackbarService {
-  private readonly snackBar = inject(MatSnackBar);
-  private readonly destroyRef = inject(DestroyRef);
-  private readonly snackbarNotification$ = new Subject<SnackbarNotification>();
+  private readonly messageService = inject(MessageService);
 
-  constructor() {
-    this.snackbarNotification$
-      .pipe(
-        throttle(() => this.getSnackBarDelay(), { leading: true, trailing: true }),
-        takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe(({ message, action, config }) => {
-        this.snackBar.open(message, action, this.getSnackBarConfig(config));
-      });
+  success(message: ToastMessageOptions): void {
+    this.messageService.add({ severity: 'success', ...this.getSnackBarConfig(message) });
   }
 
-  open(message: string, action?: string, config?: MatSnackBarConfig): void {
-    this.snackbarNotification$.next({ message, action, config });
+  info(message: ToastMessageOptions): void {
+    this.messageService.add({ severity: 'info', ...this.getSnackBarConfig(message) });
   }
 
-  private getSnackBarDelay(): Observable<null> {
-    const snackbarRef = this.snackBar._openedSnackBarRef;
-
-    if (!!snackbarRef) {
-      return snackbarRef.afterDismissed().pipe(map(() => null));
-    } else {
-      return of(null);
-    }
+  warn(message: ToastMessageOptions): void {
+    this.messageService.add({ severity: 'warn', ...this.getSnackBarConfig(message) });
   }
 
-  private getSnackBarConfig(config?: MatSnackBarConfig): MatSnackBarConfig {
+  error(message: ToastMessageOptions): void {
+    this.messageService.add({ severity: 'error', ...this.getSnackBarConfig(message) });
+  }
+
+  contrast(message: ToastMessageOptions): void {
+    this.messageService.add({ severity: 'contrast', ...this.getSnackBarConfig(message) });
+  }
+
+  secondary(message: ToastMessageOptions): void {
+    this.messageService.add({ severity: 'secondary', ...this.getSnackBarConfig(message) });
+  }
+
+  showAll(messages: ToastMessageOptions[]): void {
+    this.messageService.addAll(messages);
+  }
+
+  clear(key?: string): void {
+    this.messageService.clear(key);
+  }
+
+  private getSnackBarConfig(config?: ToastMessageOptions): ToastMessageOptions {
     return { ...DEFAULT_SNACKBAR_CONFIG, ...(config || {}) };
   }
 }

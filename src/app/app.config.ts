@@ -9,6 +9,7 @@ import { providePrimeNG } from 'primeng/config';
 
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
 import { PcThemePreset } from '@core/theme/theme-preset';
+import { MessageService } from 'primeng/api';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+    MessageService,
     provideStore(),
     provideState({ name: 'app', reducer: routerReducer }),
     provideStoreDevtools({

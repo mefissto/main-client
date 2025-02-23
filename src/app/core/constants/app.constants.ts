@@ -1,7 +1,5 @@
-import { MatSnackBarConfig } from '@angular/material/snack-bar';
+import { ToastMessageOptions } from 'primeng/api';
 
-export const DEFAULT_SNACKBAR_CONFIG: MatSnackBarConfig = {
-  horizontalPosition: 'end',
-  verticalPosition: 'top',
-  duration: 5000,
+export const DEFAULT_SNACKBAR_CONFIG: ToastMessageOptions = {
+  life: 5000,
 };
