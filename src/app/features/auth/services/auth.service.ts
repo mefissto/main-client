@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 
 import { BaseApiService } from '@core/services/base-api.service';
 
+import { Tokens } from '@interfaces';
+import { ResetPasswordDto } from '../dtos/reset-password.dto';
 import { SignInRequestDto } from '../dtos/sign-in-request.dto';
 import { SignInResponseDto } from '../dtos/sign-in-response.dto';
 import { SignUpRequestDto } from '../dtos/sign-up-request.dto';
@@ -21,9 +23,11 @@ export class AuthService {
     return this.baseApiService.post('auth/sign-up', payload);
   }
 
-  logout(): void {
-    // Perform logout logic here, e.g., clear tokens, user data, etc.
-    localStorage.removeItem('userToken');
-    // Add any other logout logic as needed
+  resetPassword(payload: ResetPasswordDto): Observable<any> {
+    return this.baseApiService.post('auth/reset-password', payload);
+  }
+
+  refreshTokens(refreshToken: string): Observable<Tokens> {
+    return this.baseApiService.post('auth/refresh-token', { refreshToken });
   }
 }

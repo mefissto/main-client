@@ -34,5 +34,3 @@ export const resetPasswordFailure = createPcErrorAction('[Auth] Reset Password F
  * Logout Actions
  */
 export const logoutRequest = createPcNoPayloadAction('[Auth] Logout Request');
-export const logoutSuccess = createPcNoPayloadAction('[Auth] Logout Success');
-export const logoutFailure = createPcErrorAction('[Auth] Logout Failure');

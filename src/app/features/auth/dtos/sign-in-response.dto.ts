@@ -1,3 +1,3 @@
-export interface SignInResponseDto {
-  accessToken: string;
-}
+import { Tokens } from '@interfaces';
+
+export interface SignInResponseDto extends Tokens {}

@@ -1,18 +1,13 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
+import { Store } from '@ngrx/store';
 
-import { AuthService } from '../services/auth.service';
+import { logoutRequest } from '../store/auth.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class LogoutGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+export function logoutGuard(): CanActivateFn {
+  return () => {
+    inject(Store).dispatch(logoutRequest());
 
-  canActivate(): boolean {
-    this.authService.logout();
-    this.router.navigate(['/auth/login']);
-    
     return false;
-  }
+  };
 }

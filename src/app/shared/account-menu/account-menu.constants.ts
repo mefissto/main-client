@@ -1,29 +1,30 @@
+import { RouteNames } from '@core/configs/route-names.config';
 import { MenuItem } from '@core/interfaces/menu-item.interface';
 
 export const ACCOUNT_MENU_ITEMS: MenuItem[] = [
   {
     icon: 'pi-user',
     label: 'My Account',
-    route: '/profile',
+    route: `/${RouteNames.userProfile}`,
   },
   {
     icon: 'pi-cog',
     label: 'Settings',
-    route: '/settings',
+    route: `/${RouteNames.settings}`,
   },
   {
     icon: 'pi-question-circle',
     label: 'Help',
-    route: '/help',
+    route: `/${RouteNames.help}`,
   },
   {
     icon: 'pi-comments',
     label: 'Feedback',
-    route: '/feedback',
+    route: `/${RouteNames.feedback}`,
   },
   {
     icon: 'pi-sign-out',
     label: 'Log out',
-    route: '/auth/logout',
+    route: `/${RouteNames.authLogout}`,
   },
 ];

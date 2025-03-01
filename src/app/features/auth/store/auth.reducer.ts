@@ -5,6 +5,7 @@ import * as authActions from './auth.actions';
 
 export interface AuthState {
   accessToken: string | null;
+  refreshToken: string | null;
   user: User | null;
   loading: boolean;
   error: any;
@@ -12,6 +13,7 @@ export interface AuthState {
 
 export const initialState: AuthState = {
   accessToken: null,
+  refreshToken: null,
   loading: false,
   error: null,
   user: null,
@@ -25,6 +27,8 @@ const _authReducer = createReducer(
     ...state,
     loading: false,
     accessToken: payload.accessToken,
+    refreshToken: payload.refreshToken,
+    error: null,
   })),
   on(authActions.signInFailure, (state, { error }) => ({
     ...state,
@@ -39,6 +43,7 @@ const _authReducer = createReducer(
     ...state,
     loading: false,
     user: payload,
+    error: null,
   })),
   on(authActions.signUpFailure, (state, { error }) => ({
     ...state,
@@ -48,12 +53,11 @@ const _authReducer = createReducer(
 
   // Reset Password
   on(authActions.resetPasswordRequest, (state) => ({ ...state, loading: true })),
-  on(authActions.resetPasswordSuccess, (state) => ({ ...state, loading: false })),
+  on(authActions.resetPasswordSuccess, (state) => ({ ...state, loading: false, error: null })),
   on(authActions.resetPasswordFailure, (state, { error }) => ({ ...state, loading: false, error })),
 
   // Logout
-  on(authActions.logoutSuccess, () => initialState),
-  on(authActions.logoutFailure, (state, { error }) => ({ ...state, error, loading: false })),
+  on(authActions.logoutRequest, () => initialState),
 );
 
 export function authReducer(state: AuthState | undefined, action: Action) {

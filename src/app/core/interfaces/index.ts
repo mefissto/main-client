@@ -1,6 +1,5 @@
-import { type MenuItem } from './menu-item.interface';
-import { type PcError } from './pc-error.interface';
-import { type User } from './user.interface';
-
-export { MenuItem, PcError, User };
+export type { MenuItem } from './menu-item.interface';
+export type { PcError } from './pc-error.interface';
+export type { Tokens } from './tokens.interface';
+export type { User } from './user.interface';
 

@@ -1,4 +1,9 @@
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptors,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
@@ -8,6 +13,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { providePrimeNG } from 'primeng/config';
 
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
+import { authInterceptor } from '@core/interceptors/token.interceptor';
 import { PcThemePreset } from '@core/theme/theme-preset';
 import { MessageService } from 'primeng/api';
 import { routes } from './app.routes';
@@ -19,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       // DI-based interceptors must be explicitly enabled.
       withInterceptorsFromDi(),
+      withInterceptors([authInterceptor]),
     ),
     provideAnimationsAsync(),
     providePrimeNG({

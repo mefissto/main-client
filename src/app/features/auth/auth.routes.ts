@@ -2,14 +2,17 @@ import { Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
-import { LogoutGuard } from './guards/logout.guard';
+import { RouteNames } from '@core/configs/route-names.config';
+import { loginGuard } from './guards/auth.guard';
+import { logoutGuard } from './guards/logout.guard';
 import { AuthEffects } from './store/auth.effects';
 import { authReducer } from './store/auth.reducer';
 import { AUTH_FEATURE_KEY } from './store/auth.selectors';
 
 export const authRoutes: Routes = [
   {
-    path: 'auth',
+    path: RouteNames.auth,
+    canActivateChild: [loginGuard()],
     loadComponent: () => import('./auth.component').then((m) => m.AuthComponent),
     providers: [
       provideEffects(AuthEffects),
@@ -19,30 +22,30 @@ export const authRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'login',
+        redirectTo: RouteNames.login,
       },
       {
-        path: 'login',
+        path: RouteNames.login,
         loadComponent: () =>
           import('./components/login/login.component').then((m) => m.LoginComponent),
       },
       {
-        path: 'registration',
+        path: RouteNames.registration,
         loadComponent: () =>
           import('./components/registration/registration.component').then(
             (m) => m.RegistrationComponent,
           ),
       },
       {
-        path: 'reset-password',
+        path: RouteNames.resetPassword,
         loadComponent: () =>
           import('./components/reset-password/reset-password.component').then(
             (m) => m.ResetPasswordComponent,
           ),
       },
       {
-        path: 'logout',
-        canActivate: [LogoutGuard],
+        path: RouteNames.logout,
+        canActivate: [logoutGuard()],
         loadComponent: () =>
           import('./components/login/login.component').then((m) => m.LoginComponent),
       },
