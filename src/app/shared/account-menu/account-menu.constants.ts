@@ -5,7 +5,7 @@ export const ACCOUNT_MENU_ITEMS: MenuItem[] = [
   {
     icon: 'pi-user',
     label: 'My Account',
-    route: `/${RouteNames.userProfile}`,
+    route: `/${RouteNames.profile}`,
   },
   {
     icon: 'pi-cog',

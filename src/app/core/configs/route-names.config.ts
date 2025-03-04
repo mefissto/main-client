@@ -14,9 +14,7 @@ export namespace RouteNames {
   export const home = 'home';
 
   // User
-  export const user = 'user';
   export const profile = 'profile';
-  export const userProfile = `${user}/${profile}`;
 
   // Settings
   export const settings = 'settings';

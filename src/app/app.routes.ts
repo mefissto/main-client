@@ -8,7 +8,6 @@ import { CoreLayoutComponent } from '@shared/core-layout/core-layout.component';
 export const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     component: CoreLayoutComponent,
     canActivate: [authGuard()],
     children: featureRoutes,
