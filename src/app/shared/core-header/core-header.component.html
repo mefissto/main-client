@@ -5,7 +5,7 @@
     </ng-template>
     <ng-template #item let-item let-root="root">
       <a pRipple class="flex items-center p-menubar-item-link">
-        <i class="pi {{ item.icon }}" style="color: slateblue"></i>
+        <i class="pi {{ item.icon }}"></i>
         <span class="ml-2">{{ item.label }}</span>
         <span
           *ngIf="item.shortcut"

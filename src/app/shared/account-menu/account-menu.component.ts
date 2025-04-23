@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
-
-import { MenuItem } from '@core/interfaces/menu-item.interface';
 
 import { ACCOUNT_MENU_ITEMS } from './account-menu.constants';
 

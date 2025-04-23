@@ -1,29 +1,30 @@
+import { MenuItem, PrimeIcons } from 'primeng/api';
+
 import { RouteNames } from '@core/configs/route-names.config';
-import { MenuItem } from '@core/interfaces/menu-item.interface';
 
 export const ACCOUNT_MENU_ITEMS: MenuItem[] = [
   {
-    icon: 'pi-user',
+    icon: PrimeIcons.USER,
     label: 'My Account',
     route: `/${RouteNames.profile}`,
   },
   {
-    icon: 'pi-cog',
+    icon: PrimeIcons.COG,
     label: 'Settings',
     route: `/${RouteNames.settings}`,
   },
   {
-    icon: 'pi-question-circle',
+    icon: PrimeIcons.QUESTION_CIRCLE,
     label: 'Help',
     route: `/${RouteNames.help}`,
   },
   {
-    icon: 'pi-comments',
+    icon: PrimeIcons.COMMENTS,
     label: 'Feedback',
     route: `/${RouteNames.feedback}`,
   },
   {
-    icon: 'pi-sign-out',
+    icon: PrimeIcons.SIGN_OUT,
     label: 'Log out',
     route: `/${RouteNames.authLogout}`,
   },

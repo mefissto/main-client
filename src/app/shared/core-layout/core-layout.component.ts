@@ -2,10 +2,7 @@ import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SidebarCloseMode, SidebarOpenMode } from '@enums';
-import { MenuItem } from '@interfaces';
 import { CoreHeaderComponent } from '@shared/core-header/core-header.component';
-
-import { CORE_LAYOUT_ROUTES } from './core-layout.constants';
 
 @Component({
   selector: 'pc-core-layout',
@@ -19,8 +16,6 @@ export class CoreLayoutComponent {
 
   openModes = SidebarOpenMode;
   closeModes = SidebarCloseMode;
-
-  protected menuItems: MenuItem[] = CORE_LAYOUT_ROUTES;
 
   isSidebarOpen = false;
 
