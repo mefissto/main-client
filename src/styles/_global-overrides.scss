@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use 'components/snackbar' as *;
 
 :root {
   @include mat.form-field-overrides(
@@ -6,4 +7,6 @@
       subscript-text-weight: 500,
     )
   );
+
+  @include snackbar;
 }

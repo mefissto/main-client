@@ -1,7 +1,5 @@
-// Keep order of imports as is
-@use './styles/reset';
+@use 'styles/main';
 @use '@angular/material' as mat;
-@use './styles/global-overrides';
 
 html {
   color-scheme: light;

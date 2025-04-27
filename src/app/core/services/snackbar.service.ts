@@ -1,45 +1,50 @@
 import { inject, Injectable } from '@angular/core';
-import { MessageService, ToastMessageOptions } from 'primeng/api';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
-import { DEFAULT_SNACKBAR_CONFIG } from '@core/constants/app.constants';
+import {
+  DEFAULT_SNACKBAR_CONFIG,
+  SNACKBAR_ERROR_CLASS,
+  SNACKBAR_INFO_CLASS,
+  SNACKBAR_SUCCESS_CLASS,
+  SNACKBAR_WARNING_CLASS,
+} from '@core/constants/app.constants';
+import { SnackbarOptions } from '@interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class SnackbarService {
-  private readonly messageService = inject(MessageService);
+  private readonly snackBar = inject(MatSnackBar);
 
-  success(message: ToastMessageOptions): void {
-    this.messageService.add({ severity: 'success', ...this.getSnackBarConfig(message) });
+  success(message: string, options?: SnackbarOptions): MatSnackBarRef<TextOnlySnackBar> {
+    const { action, ...config } = this.getSnackBarConfig(options);
+
+    return this.snackBar.open(message, action, { ...config, panelClass: SNACKBAR_SUCCESS_CLASS });
   }
 
-  info(message: ToastMessageOptions): void {
-    this.messageService.add({ severity: 'info', ...this.getSnackBarConfig(message) });
+  info(message: string, options?: SnackbarOptions): MatSnackBarRef<TextOnlySnackBar> {
+    const { action, ...config } = this.getSnackBarConfig(options);
+
+    return this.snackBar.open(message, action, { ...config, panelClass: SNACKBAR_INFO_CLASS });
   }
 
-  warn(message: ToastMessageOptions): void {
-    this.messageService.add({ severity: 'warn', ...this.getSnackBarConfig(message) });
+  warn(message: string, options?: SnackbarOptions): MatSnackBarRef<TextOnlySnackBar> {
+    const { action, ...config } = this.getSnackBarConfig(options);
+
+    return this.snackBar.open(message, action, { ...config, panelClass: SNACKBAR_WARNING_CLASS });
   }
 
-  error(message: ToastMessageOptions): void {
-    this.messageService.add({ severity: 'error', ...this.getSnackBarConfig(message) });
+  error(message: string, options?: SnackbarOptions): MatSnackBarRef<TextOnlySnackBar> {
+    const { action, ...config } = this.getSnackBarConfig(options);
+
+    return this.snackBar.open(message, action, { ...config, panelClass: SNACKBAR_ERROR_CLASS });
   }
 
-  contrast(message: ToastMessageOptions): void {
-    this.messageService.add({ severity: 'contrast', ...this.getSnackBarConfig(message) });
+  showAll(messages: SnackbarOptions[]): void {
+    // TODO : Implement this method to show all messages in the snackbar
+
+    throw new Error('Method not implemented.');
   }
 
-  secondary(message: ToastMessageOptions): void {
-    this.messageService.add({ severity: 'secondary', ...this.getSnackBarConfig(message) });
-  }
-
-  showAll(messages: ToastMessageOptions[]): void {
-    this.messageService.addAll(messages);
-  }
-
-  clear(key?: string): void {
-    this.messageService.clear(key);
-  }
-
-  private getSnackBarConfig(config?: ToastMessageOptions): ToastMessageOptions {
+  private getSnackBarConfig(config?: SnackbarOptions): SnackbarOptions {
     return { ...DEFAULT_SNACKBAR_CONFIG, ...(config || {}) };
   }
 }
