@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
@@ -13,6 +13,7 @@ import { ACCOUNT_MENU_ITEMS } from './account-menu.constants';
   imports: [RouterModule, MatIconModule, MatMenuModule, AvatarComponent],
   templateUrl: './account-menu.component.html',
   styleUrls: ['./account-menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountMenuComponent {
   menuItems: MenuItem[] = ACCOUNT_MENU_ITEMS;

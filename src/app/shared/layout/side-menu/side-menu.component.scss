@@ -1,9 +1,34 @@
+@use 'variables' as *;
+
 .pc-side-menu {
   &-item {
     display: flex;
     align-items: center;
+
+    column-gap: 8px;
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+
+    &-icon {
+      color: $primary-blue-light;
+      transition: color 0.3s ease-in-out;
+    }
+
+    &-label {
+      font-size: 18px;
+    }
+
+    &-active {
+      background-color: $hover-light-blue;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+
+      .pc-side-menu-item-icon {
+        color: $primary-blue;
+      }
+    }
   }
 }

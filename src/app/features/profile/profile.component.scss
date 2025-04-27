@@ -1,0 +1,11 @@
+.pc-profile {
+  display: flex;
+
+  &-menu {
+    width: 200px;
+  }
+
+  &-content {
+    padding: 0 16px;
+  }
+}

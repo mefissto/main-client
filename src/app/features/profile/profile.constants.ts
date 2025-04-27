@@ -1,16 +1,16 @@
+import { RouteNames } from '@core/configs/route-names.config';
 import { MenuItem } from '@interfaces';
 
 export const PROFILE_SIDE_MENU: MenuItem[] = [
   {
     label: 'Profile',
     icon: 'person',
-    routerLinkActiveOptions: { exact: true },
-    routerLink: '/profile',
+    routerLink: `/${RouteNames.profileOverview}`,
   },
   {
     label: 'Pets',
     icon: 'pets',
-    routerLink: '/pets',
+    routerLink: `/${RouteNames.profilePets}`,
   },
   {
     label: 'Examples',

@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SidebarCloseMode, SidebarOpenMode } from '@enums';
@@ -9,6 +9,7 @@ import { CoreHeaderComponent } from '@shared/layout/core-header/core-header.comp
   imports: [CoreHeaderComponent, RouterModule, RouterModule],
   templateUrl: './core-layout.component.html',
   styleUrl: './core-layout.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoreLayoutComponent {
   openMode = input<SidebarOpenMode>(SidebarOpenMode.PUSH);

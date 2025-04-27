@@ -1,4 +1,6 @@
 $primary-blue: #005cbb;
+$primary-blue-light: #0072e5;
+$primary-red: #d50000;
 
 // states
 $error-state: #d50000;
@@ -13,3 +15,6 @@ $border-color-error: $error-state;
 $border-color-warning: $warning-state;
 $border-color-success: $success-state;
 $border-color-info: $info-state;
+
+// Hover Colors
+$hover-light-blue: #d1ecff;

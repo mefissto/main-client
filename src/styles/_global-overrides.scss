@@ -2,9 +2,17 @@
 @use 'components/snackbar' as *;
 
 :root {
+  // Form field overrides
   @include mat.form-field-overrides(
     (
       subscript-text-weight: 500,
+    )
+  );
+
+  // Menu overrides
+  @include mat.menu-overrides(
+    (
+      container-color: white,
     )
   );
 

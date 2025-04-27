@@ -15,6 +15,10 @@ export namespace RouteNames {
 
   // User
   export const profile = 'profile';
+  export const pets = 'pets';
+  export const overview = 'overview';
+  export const profileOverview = `${profile}/${overview}`;
+  export const profilePets = `${profile}/${pets}`;
 
   // Settings
   export const settings = 'settings';

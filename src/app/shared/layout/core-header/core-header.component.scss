@@ -1,5 +1,16 @@
 @use 'variables' as *;
 
-.pc-core-header-component {
-    border-bottom: 1px solid $border-color-default;
+.pc-core-header {
+  border-bottom: 1px solid $border-color-default;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Light box shadow
+  padding: 4px 0;
+
+  &-logo {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 28px;
+    margin-left: 1rem;
+    color: $primary-red;
+    cursor: pointer;
+  }
 }
