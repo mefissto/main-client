@@ -14,7 +14,6 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
 import { authInterceptor } from '@core/interceptors/token.interceptor';
-import { MessageService } from 'primeng/api';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -27,7 +26,6 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([authInterceptor]),
     ),
     provideAnimationsAsync(),
-    MessageService,
     provideStore(),
     provideState({ name: 'app', reducer: routerReducer }),
     provideStoreDevtools({
