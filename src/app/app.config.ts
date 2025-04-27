@@ -5,16 +5,15 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { routerReducer } from '@ngrx/router-store';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { providePrimeNG } from 'primeng/config';
 
 import { ErrorInterceptor } from '@core/interceptors/error.interceptor';
 import { authInterceptor } from '@core/interceptors/token.interceptor';
-import { PcThemePreset } from '@core/theme/theme-preset';
 import { MessageService } from 'primeng/api';
 import { routes } from './app.routes';
 
@@ -28,19 +27,6 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([authInterceptor]),
     ),
     provideAnimationsAsync(),
-    providePrimeNG({
-      ripple: true,
-      theme: {
-        preset: PcThemePreset,
-        options: {
-          darkModeSelector: '.pc-dark-theme',
-          cssLayer: {
-            name: 'primeng',
-            order: 'app-styles, tailwind-base, primeng, tailwind-utilities',
-          },
-        },
-      },
-    }),
     MessageService,
     provideStore(),
     provideState({ name: 'app', reducer: routerReducer }),
@@ -57,6 +43,10 @@ export const appConfig: ApplicationConfig = {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true,
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
     },
   ],
 };

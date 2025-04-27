@@ -1,19 +1,13 @@
-import { NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { FloatLabel } from 'primeng/floatlabel';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { InputIconModule } from 'primeng/inputicon';
-import { InputTextModule } from 'primeng/inputtext';
-import { MessageModule } from 'primeng/message';
 
-import { markAllControlsAsDirty } from '@core/utils/form.utils';
 import { confirmPasswordValidator } from '@core/validators/confirm-password';
 
 import { signUpRequest } from '../../store/auth.actions';
@@ -23,20 +17,16 @@ import { AuthState } from '../../store/auth.reducer';
   selector: 'pc-registration',
   imports: [
     ReactiveFormsModule,
-    NgIf,
     RouterModule,
-    ButtonModule,
-    CardModule,
-    MessageModule,
-    FloatLabel,
-    InputTextModule,
-    InputGroupModule,
-    InputGroupAddonModule,
-    IconFieldModule,
-    InputIconModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
   ],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationComponent {
   private readonly store: Store<AuthState> = inject(Store);
@@ -51,7 +41,6 @@ export class RegistrationComponent {
 
   onSubmit(): void {
     this.form.markAllAsTouched();
-    markAllControlsAsDirty(this.form);
 
     if (this.form.valid) {
       console.log(this.form.value);

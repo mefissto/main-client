@@ -1,0 +1,53 @@
+@use '@angular/material' as mat;
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@mixin auth-card {
+  .auth-card {
+    display: block;
+    width: 450px;
+    padding: 16px;
+
+    &-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: $primary-blue;
+      margin-bottom: 24px;
+    }
+
+    @include form-control;
+    @include button-text-link;
+
+    .button-text-link {
+      position: relative;
+      top: -36px;
+      left: 270px;
+    }
+
+    &-actions {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 48px;
+
+      @include mat.button-overrides(
+        (
+          filled-horizontal-padding: 72px,
+        )
+      );
+
+      &-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @include mat.button-overrides(
+      (
+        filled-container-height: 40px,
+      )
+    );
+  }
+}

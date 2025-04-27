@@ -1,172 +1,74 @@
 <div class="auth-registration">
-  <p-card class="auth-card">
-    <ng-template #title> <span class="auth-card-title">Sign up</span> </ng-template>
-    <ng-template #content>
-      <form [formGroup]="form" class="flex flex-col gap-4">
-        <!-- Username -->
-        <div class="flex flex-col gap-1 pb-6 relative">
-          <p-iconfield>
-            <p-floatlabel variant="on">
-              <input
-                pInputText
-                formControlName="username"
-                id="on_username"
-                aria-label="username"
-                fluid
-                (blur)="form.controls.username.markAsDirty()"
-              />
-              <label for="on_email">Username</label>
-            </p-floatlabel>
-            <p-inputicon styleClass="pi pi-user" />
-          </p-iconfield>
-          <p-message
-            *ngIf="form.controls.username.touched && form.controls.username.errors?.['required']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Username is required
-          </p-message>
-          <p-message
-            *ngIf="form.controls.username.touched && form.controls.username.errors?.['minlength']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Username must be at least 3 chars long
-          </p-message>
-        </div>
+  <mat-card class="auth-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="auth-card-title">Sign up</h3>
+      </mat-card-title>
+    </mat-card-header>
 
-        <!-- Email -->
-        <div class="flex flex-col gap-1 pb-6 relative">
-          <p-iconfield>
-            <p-floatlabel variant="on">
-              <input
-                pInputText
-                formControlName="email"
-                id="on_email"
-                aria-label="email"
-                fluid
-                (blur)="form.controls.email.markAsDirty()"
-              />
-              <label for="on_email">Email</label>
-            </p-floatlabel>
-            <p-inputicon styleClass="pi pi-envelope" />
-          </p-iconfield>
-          <p-message
-            *ngIf="form.controls.email.touched && form.controls.email.errors?.['required']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Email is required
-          </p-message>
-          <p-message
-            *ngIf="form.controls.email.touched && form.controls.email.errors?.['email']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Please enter a valid email address
-          </p-message>
-        </div>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-form-field class="form-control">
+          <mat-label>Username</mat-label>
+          <mat-icon matIconSuffix fontIcon="person"></mat-icon>
+          <input matInput [formControl]="form.controls.username" />
 
-        <!-- Password -->
-        <div class="flex flex-col gap-1 pb-6 relative">
-          <p-iconfield>
-            <p-floatlabel variant="on">
-              <input
-                pInputText
-                formControlName="password"
-                id="on_password"
-                aria-label="Password"
-                type="password"
-                fluid
-                (blur)="form.controls.password.markAsDirty()"
-              />
-              <label for="on_password">Password</label>
-            </p-floatlabel>
-            <p-inputicon styleClass="pi pi-key" />
-          </p-iconfield>
-          <p-message
-            *ngIf="form.controls.password.touched && form.controls.password.errors?.['required']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Password is required
-          </p-message>
-          <p-message
-            *ngIf="form.controls.password.touched && form.controls.password.errors?.['minlength']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Password must be at least 8 chars long
-          </p-message>
-        </div>
+          @if (form.controls.username.touched && form.controls.username.hasError('required')) {
+          <mat-error>Username is required</mat-error>
+          } @else if (form.controls.username.touched &&
+          form.controls.username.hasError('minlength')) {
+          <mat-error>Username must be at least 3 chars long</mat-error>
+          }
+        </mat-form-field>
 
-        <!-- Confirm password -->
-        <div class="flex flex-col gap-1 pb-6 relative">
-          <p-iconfield>
-            <p-floatlabel variant="on">
-              <input
-                pInputText
-                formControlName="confirmPassword"
-                id="on_confirm_password"
-                aria-label="Confirm password"
-                type="password"
-                fluid
-                (blur)="form.controls.confirmPassword.markAsDirty()"
-              />
-              <label for="on_confirm_password">Confirm password</label>
-            </p-floatlabel>
-            <p-inputicon styleClass="pi pi-key" />
-          </p-iconfield>
-          <p-message
-            *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.['required']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Confirm password is required
-          </p-message>
-          <p-message
-            *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.['passwordsMismatch']"
-            severity="error"
-            variant="simple"
-            size="small"
-            class="ml-3 absolute bottom-0"
-          >
-            Passwords do not match
-          </p-message>
-        </div>
+        <mat-form-field class="form-control">
+          <mat-label>Email</mat-label>
+          <mat-icon matIconSuffix fontIcon="email"></mat-icon>
+          <input matInput [formControl]="form.controls.email" />
+
+          @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+          <mat-error>Email is required</mat-error>
+          } @else if (form.controls.email.touched && form.controls.email.hasError('email')) {
+          <mat-error>Please enter a valid email address</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="form-control">
+          <mat-label>Password</mat-label>
+          <mat-icon matIconSuffix fontIcon="key"></mat-icon>
+          <input matInput [formControl]="form.controls.password" type="password" />
+
+          @if (form.controls.password.touched && form.controls.password.hasError('required')) {
+          <mat-error>Email is required</mat-error>
+          } @else if (form.controls.password.touched &&
+          form.controls.password.hasError('minlength')) {
+          <mat-error>Password must be at least 8 chars long</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="form-control">
+          <mat-label>Confirm password</mat-label>
+          <mat-icon matIconSuffix fontIcon="key"></mat-icon>
+          <input matInput [formControl]="form.controls.confirmPassword" type="password" />
+
+          @if (form.controls.confirmPassword.touched &&
+          form.controls.confirmPassword.hasError('required')) {
+          <mat-error>Confirm password is required</mat-error>
+          } @else if (form.controls.password.touched &&
+          form.controls.password.hasError('passwordsMismatch')) {
+          <mat-error>Passwords do not match</mat-error>
+          }
+        </mat-form-field>
       </form>
-    </ng-template>
+    </mat-card-content>
 
-    <ng-template #footer>
-      <div class="flex flex-col gap-y-16 mt-6">
-        <button
-          label="Sign up"
-          pRipple
-          pButton
-          [raised]="true"
-          (click)="onSubmit()"
-          styleClass="w-100"
-          class="w-full"
-        ></button>
-        <div class="flex flex-col justify-center items-center">
-          <p>Already have an account?</p>
-          <p-button label="Log in!" [link]="true" routerLink="/auth/login" />
-        </div>
+    <mat-card-actions class="auth-card-actions">
+      <button mat-flat-button (click)="onSubmit()" class="auth-card-action">Sign up</button>
+
+      <div class="auth-card-actions-hint">
+        <p>Don't have an account?</p>
+        <a mat-button routerLink="/auth/login">Log in!</a>
       </div>
-    </ng-template>
-  </p-card>
+    </mat-card-actions>
+  </mat-card>
 </div>
