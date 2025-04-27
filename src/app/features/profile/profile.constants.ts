@@ -1,34 +1,34 @@
-import { MenuItem, PrimeIcons } from 'primeng/api';
+import { MenuItem } from '@interfaces';
 
 export const PROFILE_SIDE_MENU: MenuItem[] = [
   {
     label: 'Profile',
-    icon: PrimeIcons.USER,
+    icon: 'person',
     routerLinkActiveOptions: { exact: true },
     routerLink: '/profile',
   },
   {
     label: 'Pets',
-    icon: PrimeIcons.ANDROID,
+    icon: 'pets',
     routerLink: '/pets',
   },
   {
     label: 'Examples',
-    icon: PrimeIcons.EXTERNAL_LINK,
+    icon: 'pets',
     items: [
       {
         label: 'External Angular',
-        icon: PrimeIcons.STAR,
+        icon: 'pets',
         url: 'https://angular.io/',
       },
       {
         label: 'Internal - Installation',
-        icon: PrimeIcons.ERASER,
+        icon: 'pets',
         route: '/installation',
       },
       {
         label: 'No link',
-        icon: PrimeIcons.LINK,
+        icon: 'pets',
       },
     ],
   },

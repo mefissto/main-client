@@ -5,3 +5,11 @@ $error-state: #d50000;
 $warning-state: #ff9800;
 $success-state: #4caf50;
 $info-state: #2196f3;
+
+// Border Colors
+$border-color-default: #e0e0e0;
+$border-color-primary: $primary-blue;
+$border-color-error: $error-state;
+$border-color-warning: $warning-state;
+$border-color-success: $success-state;
+$border-color-info: $info-state;

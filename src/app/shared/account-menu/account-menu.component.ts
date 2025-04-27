@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { AvatarModule } from 'primeng/avatar';
-import { MenuModule } from 'primeng/menu';
+
+import { MenuItem } from '@interfaces';
 
 import { ACCOUNT_MENU_ITEMS } from './account-menu.constants';
 
 @Component({
   selector: 'pc-account-menu',
-  imports: [RouterModule, AvatarModule, MenuModule],
+  imports: [RouterModule, MatIconModule, MatMenuModule],
   templateUrl: './account-menu.component.html',
   styleUrls: ['./account-menu.component.scss'],
 })

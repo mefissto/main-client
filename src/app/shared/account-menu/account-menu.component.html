@@ -1,25 +1,17 @@
 <div class="pc-account-menu">
-  <p-avatar
-    image="https://avatar.iran.liara.run/username?username=Serhii+Maryniuk"
-    shape="circle"
-    size="large"
+  <img
+    src="https://avatar.iran.liara.run/username?username=Serhii+Maryniuk"
     ariaLabel="Account menu"
     class="pc-account-menu-avatar"
-    (click)="menu.toggle($event)"
+    [matMenuTriggerFor]="menu"
   />
 </div>
 
-<p-menu
-  #menu
-  [model]="menuItems"
-  [popup]="true"
-  class="flex justify-center"
-  styleClass="w-full md:w-10"
->
-  <ng-template #item let-item>
-    <a pRipple [routerLink]="item.route" class="flex items-center p-menu-item-link">
-      <i class="pi {{ item.icon }}" style="color: slateblue"></i>
-      <span class="ml-2">{{ item.label }}</span>
-    </a>
-  </ng-template>
-</p-menu>
+<mat-menu #menu="matMenu">
+  @for(item of menuItems; track item.label) {
+  <button mat-menu-item [routerLink]="item.route">
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span>{{ item.label }}</span>
+  </button>
+  }
+</mat-menu>

@@ -1,9 +1,10 @@
 import { NgIf } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MenuItem } from 'primeng/api';
 import { PanelMenu } from 'primeng/panelmenu';
 import { Ripple } from 'primeng/ripple';
+
+import { MenuItem } from '@interfaces';
 
 @Component({
   selector: 'pc-side-menu',
