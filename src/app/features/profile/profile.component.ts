@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { SideMenuComponent } from '@shared/side-menu/side-menu.component';
+import { SideMenuComponent } from '@shared/layout/side-menu/side-menu.component';
 
 import { PROFILE_SIDE_MENU } from './profile.constants';
 

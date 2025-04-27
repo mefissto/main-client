@@ -1,10 +1,10 @@
 <div class="pc-account-menu">
-  <img
-    src="https://avatar.iran.liara.run/username?username=Serhii+Maryniuk"
-    ariaLabel="Account menu"
-    class="pc-account-menu-avatar"
+  <pc-avatar
+    [imageSrc]="userAvatar"
+    size="large"
+    altText="Account menu"
     [matMenuTriggerFor]="menu"
-  />
+  ></pc-avatar>
 </div>
 
 <mat-menu #menu="matMenu">

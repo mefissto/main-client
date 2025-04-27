@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SidebarCloseMode, SidebarOpenMode } from '@enums';
-import { CoreHeaderComponent } from '@shared/core-header/core-header.component';
+import { CoreHeaderComponent } from '@shared/layout/core-header/core-header.component';
 
 @Component({
   selector: 'pc-core-layout',

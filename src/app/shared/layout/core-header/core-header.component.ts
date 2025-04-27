@@ -3,7 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { AccountMenuComponent } from '@shared/account-menu/account-menu.component';
+import { AccountMenuComponent } from '@shared/components/account-menu/account-menu.component';
 
 @Component({
   selector: 'pc-core-header',
