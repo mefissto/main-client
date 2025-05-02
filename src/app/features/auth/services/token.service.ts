@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@core/constants/app.constants';
+import { Tokens } from '@interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +25,11 @@ export class TokenService {
 
   setRefreshToken(token: string): void {
     localStorage.setItem(REFRESH_TOKEN_KEY, token);
+  }
+
+  saveTokens(tokens: Tokens): void {
+    this.setAccessToken(tokens.accessToken);
+    this.setRefreshToken(tokens.refreshToken);
   }
 
   clearTokens(): void {

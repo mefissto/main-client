@@ -8,6 +8,7 @@ import { ResetPasswordDto } from '../dtos/reset-password.dto';
 import { SignInRequestDto } from '../dtos/sign-in-request.dto';
 import { SignInResponseDto } from '../dtos/sign-in-response.dto';
 import { SignUpRequestDto } from '../dtos/sign-up-request.dto';
+import { SocialSignInDto } from '../dtos/social-sign-in.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,9 @@ export class AuthService {
 
   refreshTokens(refreshToken: string): Observable<Tokens> {
     return this.baseApiService.post('auth/refresh-token', { refreshToken });
+  }
+
+  loginWithGoogle(socialSignInDto: SocialSignInDto): Observable<SignInResponseDto> {
+    return this.baseApiService.post('social-authentication/google', socialSignInDto);
   }
 }

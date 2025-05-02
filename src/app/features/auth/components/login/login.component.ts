@@ -8,8 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { signInRequest } from '../../store/auth.actions';
+import { signInRequest, signInWithGoogleRequest } from '../../store/auth.actions';
 import { AuthState } from '../../store/auth.reducer';
+import { GoogleLoginComponent } from '../social/google-login/google-login.component';
 
 @Component({
   selector: 'pc-login',
@@ -21,6 +22,7 @@ import { AuthState } from '../../store/auth.reducer';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    GoogleLoginComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -43,5 +45,9 @@ export class LoginComponent {
 
       this.store.dispatch(signInRequest({ payload: this.form.getRawValue() }));
     }
+  }
+
+  handleGoogleLogin(token: string): void {
+    this.store.dispatch(signInWithGoogleRequest({ payload: { token } }));
   }
 }

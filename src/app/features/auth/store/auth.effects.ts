@@ -22,13 +22,29 @@ export class AuthEffects {
       mergeMap((action) =>
         this.authService.login(action.payload).pipe(
           map((signInResponse) => {
-            this.tokenService.setAccessToken(signInResponse.accessToken);
-            this.tokenService.setRefreshToken(signInResponse.refreshToken);
+            this.tokenService.saveTokens(signInResponse);
             this.router.navigate(['']);
 
             return authActions.signInSuccess({ payload: signInResponse });
           }),
           catchError((error) => of(authActions.signInFailure({ error }))),
+        ),
+      ),
+    ),
+  );
+
+  readonly loginWithGoogle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.signInWithGoogleRequest),
+      mergeMap((action) =>
+        this.authService.loginWithGoogle(action.payload).pipe(
+          map((signInResponse) => {
+            this.tokenService.saveTokens(signInResponse);
+            this.router.navigate(['']);
+
+            return authActions.signInWithGoogleSuccess({ payload: signInResponse });
+          }),
+          catchError((error) => of(authActions.signInWithGoogleFailure({ error }))),
         ),
       ),
     ),

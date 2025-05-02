@@ -22,15 +22,18 @@ export const initialState: AuthState = {
 const _authReducer = createReducer(
   initialState,
   // Login
-  on(authActions.signInRequest, (state) => ({ ...state, loading: true })),
-  on(authActions.signInSuccess, (state, { payload }) => ({
+  on(authActions.signInRequest, authActions.signInWithGoogleRequest, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(authActions.signInSuccess, authActions.signInWithGoogleSuccess, (state, { payload }) => ({
     ...state,
     loading: false,
     accessToken: payload.accessToken,
     refreshToken: payload.refreshToken,
     error: null,
   })),
-  on(authActions.signInFailure, (state, { error }) => ({
+  on(authActions.signInFailure, authActions.signInWithGoogleFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error,

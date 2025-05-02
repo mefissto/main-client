@@ -44,6 +44,8 @@
         <p>Don't have an account?</p>
         <a mat-button routerLink="/auth/registration">Sign up!</a>
       </div>
+
+      <pc-google-login (oauthResponse)="handleGoogleLogin($event)"></pc-google-login>
     </mat-card-actions>
   </mat-card>
 </div>
